@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="quality_level">
+        <item></item>
+        <item>Ótimo</item>
+        <item>Bom</item>
+        <item>Razoável</item>
+        <item>Ruim</item>
+        <item>Demolição</item>
+    </string-array>
+</resources>

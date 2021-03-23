@@ -1,6 +1,7 @@
 package com.example.avaliadorimovel.main
 
 interface MainView {
-    fun navigateToDetails()
     fun navigateToHelp()
+    fun navigateToDetailsApartment()
+    fun navigateToDetailsHouse()
 }
