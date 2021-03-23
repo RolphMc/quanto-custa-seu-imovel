@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".view.MainActivity">
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/avaliador_online"
+        android:textSize="40sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/title1"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorPrimary" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="Calculadora"
+        android:textSize="30sp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="8dp"
+        tools:context=".view.MainActivity">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="@string/lading"
+            android:textSize="20sp"/>
+
+        <LinearLayout
+            android:id="@+id/button_group1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text1"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:id="@+id/button_apartamento"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/text1"
+                android:layout_margin="8dp"
+                android:text="@string/apartment" />
+
+            <Button
+                android:id="@+id/button_casa"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/text1"
+                android:layout_margin="8dp"
+                android:layout_toRightOf="@+id/button_apartamento"
+                android:text="@string/house"
+                android:enabled="false"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/help_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_group1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:text="@string/understand_app"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

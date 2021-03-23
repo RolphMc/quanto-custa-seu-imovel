@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Meu Imóvel - Quanto Custa</string>
+
+    //HELPACTIVIT
+    <string name="help_sobre_title">O Aplicativo</string>
+    <string name="help_sobre_body">Bem-vindo ao Avaliador Online onde poderá calcular o valor de seu imóvel de forma rápida e com uma precisão consideravelmente alta. Os fundamentos para o desenvolvimento desse sistema foram embasados sobre as Normas Brasileiras de Avaliações de Imóveis e suas respectivas partes (NBR 14653), além de seguir os parâmetros definidos pelo Instituto Brasileiro de Avaliações e Perícias de Engenharia – IBAPE.</string>
+    <string name="help_Desenvolvimento_title">Desenvolvimento</string>
+    <string name="help_Desenvolvimento_body">Inicialmente estará disponível apenas a funcionalidade do cálculo para apartamentos, entretanto a medida que as funcionalidades existentes estiverem aperfeiçoadas a um nível considerável, será disponibilizado não apenas o sistema para cálculo de residências como também para terrenos, casas, comércios, salas comerciais, etc, além de recursos para definição do valor de aluguel de diversos tipos de imóveis e outras funcionalidades e serviços correlatos. Este manual estará passando por aperfeiçoamentos no decorrer do tempo e trará informações aprofundadas sobre como os cálculos são feitos e informações relevantes para auxiliar os proprietários no momento de realizar quaisquer tipos de transações imobiliárias.</string>
+    <string name="help_Objetivo_title">Objetivo</string>
+    A finalidade desse aplicativo é oferecer aos proprietários ou compradores uma forma rápida de comparação dos valores estipulados para diversos tipos de transação imobiliária. Vale lembrar que o cálculo para determinar o valor de um bem imóvel conta com muitas variáveis e caso o valor demonstrado por nossa calculadora não esteja de acordo com o valor avaliado, o motivo provavelmente esteja em alguma variável não considerada neste cálculo por exemplo: “Seu apartamento ter todas as janelas voltadas para uma avenida super movimentada com alto índice de ruídos” ou “O condomínio estar em péssimas condições de conservação, mesmo que seu imóvel esteja impecável”, no geral os fatores que podem influenciar os valores de um imóvel são extremamente numerosos e pensando nisso em breve estaremos oferecendo a possibilidade de estar nos encaminhando dúvidas relacionadas ao assunto para que possamos lhe auxiliar.<string name="help_Objetivo_body">A finalidade desse aplicativo é auxiliar proprietários ou compradores na comparação dos valores estipulados para determinados imóveis. Vale lembrar que o cálculo para determinar o valor de um bem imóvel conta com muitas variáveis e caso o valor demonstrado por nossa calculadora não esteja de acordo com o valor avaliado, pode ser que o motivo esteja em alguma variável não considerada neste cálculo, em breve ofereceremos a possibilidade de estar nos encaminhando dúvidas relacionadas ao assunto para que possamos lhe auxiliar na verificação dos valores de seu imóvel.</string>
+    <string name="help_Funcionamento_title">Como esse Aplicativo Funciona</string>
+    <string name="help_Funcionamento_body">O método empregado nesse sistema é o Método Comparativo Direto de Dados de Mercado (NBR 14653-2) que consiste em comparar imóveis com características o mais semelhante possível ao do imóvel avaliado. Importante lembrar que esse aplicativo serve apenas como referência e que ainda está em desenvolvimento, para que você tenha um laudo válido e que sirva como prova pericial ou para qualquer outra finalidade é necessária a contratação de um profissional devidamente habilitado. Precisa de auxilio, nos contate pelo Whatsapp https://is.gd/Gz7hu0 </string>
+    <string name="help_area_privativa_title">Área Privativa</string>
+    <string name="help_area_privativa_body"> É aquela de uso exclusivo de seu proprietário incluindo a área da vaga da garagem e possíveis depósitos particulares. Normalmente tal medida pode ser encontrada na descrição do imóvel em sua matricula logo no primeiro parágrafo.</string>
+    <string name="help_padroes_de_acabamento_title">Padrões de Acabamento</string>
+    <string name="help_padroes_de_acabamento_body">Os padrões de acabamento desse aplicativo são definidos em 5 níveis, sendo:</string>
+    <string name="help_padroes_de_acabamento_1">Econômico</string>
+    <string name="help_padroes_de_acabamento_11">Padrão de Acabamento - Apartamento em edifício sem portaria e elevador, fachada normalmente pintada a látex sobre o emboço ou reboco, hall de entrada e corredores com dimensões reduzidas e acabamentos simples. As unidades normalmente são constituídas de sala, um ou mais dormitório, banheiro, cozinha e área de serviço conjugada sem dependências de empregada. Caracterizam-se pela utilização de materiais construtivos de baixo acabamento. </string>
+    <string name="help_padroes_de_acabamento_2">Simples</string>
+    <string name="help_padroes_de_acabamento_21">Padrão de Acabamento - Apartamento em edifício com ou sem elevador, geralmente sem portaria, fachada geralmente pintada a látex sobre o emboço ou reboco podendo ter aplicações de pastilhas cerâmicas ou equivalentes, hall de entrada e corredores com dimensões reduzidas e acabamentos simples. As unidades normalmente são constituídas de sala, um ou mais banheiros e dormitórios, área de serviços conjugada ou separada por meia parede e sem dependências de empregada. Caracterizam-se pela utilização de materiais construtivos de baixo acabamento, porém de boa qualidade.</string>
+    <string name="help_padroes_de_acabamento_3">Normal</string>
+    <string name="help_padroes_de_acabamento_31">Padrão de Acabamento - Apartamento em edifício com elevador e no geral 4 unidades por andar, guarita e apartamento do zelador, áreas comuns podendo conter salão de festas, quadras e piscinas, fachada com pintura sobre massa corrida ou texturizada, aplicação de pastilhas, cerâmicas ou equivalentes. As unidades normalmente são constituídas de salas para dois ambientes, cozinha, área de serviço conjugada, dois ou três dormitórios (sendo uma suíte), com uma vaga de garagem por apartamento e podendo possuir ou não dependências para empregada. Caracteriza-se pela utilização de materiais construtivos de boa qualidade, porém padronizados e fabricados em escala comercial.</string>
+    <string name="help_padroes_de_acabamento_4">Superior</string>
+    <string name="help_padroes_de_acabamento_41">Padrão de Acabamento - Apartamento em edifício com dois ou mais elevadores e no geral 2 unidades por andar, sistemas de segurança, guarita e equipes de manutenção, áreas comuns contendo grandes afastamentos e jardins, podendo ou não conter áreas de lazer (salão de festas, quadras de esportes, piscinas, etc), fachada com pintura sobre massa corrida, texturizada ou em cerâmica eventualmente combinados com detalhes em granito ou materiais equivalentes. As unidades normalmente contêm sala para dois ou mais ambientes, três dormitórios, pelo menos uma suíte, cozinha, dois ou mais banheiros completos, dependência para empregada e duas ou mais vagas de estacionamento. Caracteriza-se pelo uso de materiais construtivos de bom padrão e qualidade.</string>
+    <string name="help_padroes_de_acabamento_5">Alto</string>
+    <string name="help_padroes_de_acabamento_51">Padrão de Acabamento - Apartamento em edifício com desenho arquitetônico exclusivo e estilo diferenciado, áreas privativas e sociais amplas e bem planejadas atendendo a projetos paisagísticos, caracterizadas pela natureza excepcionalmente nobre dos materiais e dos revestimentos utilizados, no geral contêm áreas de lazer completas, elevadores com acesso e circulação independentes para a parte social e de serviço. As unidades são amplas e normalmente uma por andar, podendo ser duplex ou tríplex, salas para diversos ambientes, pelo menos 4 suítes, com “closet” sendo uma delas master, cozinha, despensa e área de serviço com instalações completas para empregados, além de varandas podendo ter churrasqueiras e piscinas privativas. Normalmente com 4 ou mais vagas de estacionamento por unidade, além de outras para visitantes. Caracteriza-se pelo uso excepcionalmente nobre de materiais construtivos.</string>
+    <string name="help_estado_de_conservação_title">Estado de Conservação</string>
+    <string name="help_estado_de_conservação_body">Os critérios para definição do estado de conservação do imóvel definidos nesse aplicativo estão graduados em 5 níveis, sendo:</string>
+    <string name="help_estado_de_conservação_1">Demolição</string>
+    <string name="help_estado_de_conservação_11">Estado de Conservação - Sem a mínima condição de habitabilidade, imóvel em estado de ruína.</string>
+    <string name="help_estado_de_conservação_2">Ruim</string>
+    <string name="help_estado_de_conservação_21">Estado de Conservação - Requer intervenção generalizada na maior parte do imóvel com profundidade em locais críticos, alto nível de comprometimento da funcionalidade, segurança e habitabilidade. Implica restauração, recuperação, remoção, substituição, adição de elementos ou materiais com mão de obra especializada.</string>
+    <string name="help_estado_de_conservação_3">Razoável</string>
+    <string name="help_estado_de_conservação_31">Estado de Conservação - Passou por manutenção eventual ou periódica, mantendo uma boa aparência e condições normais de uso, mas sem aspectos que demonstre manutenções recentes. Requer manutenções superficiais em pontos localizados para restauração de características e/ou funcionalidades originais, necessita de serviços de manutenção com mão de obra especializada, mas que não compromete a habitabilidade/funcionalidade.</string>
+    <string name="help_estado_de_conservação_4">Bom</string>
+    <string name="help_estado_de_conservação_41">Estado de Conservação - Quando o imóvel passou de serviços de recuperação que o deixou em condições próximas ao de novo. Contém atividades de manutenção permanente e eficiente que mantém a sua aparência e/ou uso em ótimas condições de conservação; Requer apenas limpeza sem necessidade de mão de obra especializada para mantê-lo em boas condições de uso ou aparência</string>
+    <string name="help_estado_de_conservação_5">Ótimo</string>
+    <string name="help_estado_de_conservação_51">Estado de Conservação - Imóvel de ocupação recente, com até 6 meses de uso e sem danos</string>
+
+    //geral
+    <string name="lading">Descubra o valor do seu imóvel de forma simples e rápida</string>
+    <string name="apartment">Apartamento</string>
+    <string name="house">Casa</string>
+    <string name="understand_app">Entenda este Aplicativo</string>
+    <string name="fill_feature">Preencha as características do seu imóvel:</string>
+    <string name="avaliador_online">Avaliador Online</string>
+    <string name="finishing_pattern">Padrão de Acabamento:</string>
+    <string name="input_string">_________</string>
+    <string name="parking_spaces">Vagas de Garagem:</string>
+    <string name="private_area">Área Privativa:</string>
+    <string name="conservation_state">Estado de Conservação:</string>
+    <string name="leading1">Insira 3 amostras de apartamentos na mesma região e com características semelhantes ao seu. Sua
+        consulta pode ser feita em sites como Viva Real, Zap Móveis, Imóvel Web, entre outros.</string>
+    <string name="calcular_valor_imovel">Cálcular Valor Imóvel</string>
+    <string name="comparative_properties">Imóveis Comparativos:</string>
+    <string name="result">Resultado</string>
+    <string name="section_text3">Valor do seu imóvel com base nos parâmetros Informados</string>
+    <string name="alertdialog_campo_vazio">Preencha todos os campos para que o cálculo tenha a precisão mínima necessária!</string>
+    <string name="alertdialog_ok">Ok</string>
+    <string name="alertdialog_title_campos_vazios">Campos Vázios</string>
+    <string name="know_more">Saiba Mais</string>
+    <string name="outlier_title">Amostra Discrepante</string>
+    <string name="outlier_sample1">Amostra 1</string>
+    <string name="outlier_sample2">A amostra 2 está em desarmonia com as amostras restantes, podendo gerar uma variação do
+        resultado acima de 15% para mais ou para menos, gostaria de substituí-la?</string>
+    <string name="outlier_sample3">A amostra 3 está em desarmonia com as amostras restantes, podendo gerar uma variação do
+        resultado acima de 15% para mais ou para menos, gostaria de substituí-la?</string>
+    <string name="outlier_yes">Sim</string>
+    <string name="outlier_no">Não</string>
+</resources>
