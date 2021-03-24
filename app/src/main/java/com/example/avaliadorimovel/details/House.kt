@@ -1,6 +1,6 @@
 package com.example.avaliadorimovel.details
 
-class CreateSample (
+class House (
     var paradigm: Boolean,
     var costImmobile: Float?,
     var areaImmobile: Int,
