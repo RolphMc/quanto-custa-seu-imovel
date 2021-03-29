@@ -1,0 +1,14 @@
+package com.sugarya.footer.interfaces
+
+/**
+ * Created by Ethan Ruan 2018/06/14
+ * Linear下拉列表Item接口
+ */
+interface ISpinnerItem {
+
+    val titleName: String
+
+    val titleId: String
+
+    var isSelected: Boolean
+}

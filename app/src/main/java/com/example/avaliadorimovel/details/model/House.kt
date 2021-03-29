@@ -1,4 +1,4 @@
-package com.example.avaliadorimovel.details
+package com.example.avaliadorimovel.details.model
 
 class House (
     var paradigm: Boolean,

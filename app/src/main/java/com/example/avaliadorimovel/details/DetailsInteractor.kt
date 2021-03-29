@@ -1,39 +1,25 @@
 package com.example.avaliadorimovel.details
 
-import kotlinx.android.synthetic.main.activity_details.*
+import com.example.avaliadorimovel.details.interfaces.InterfaceDetailsInteractor
+import com.example.avaliadorimovel.details.model.SpinnerLinearSpinner
+import com.example.avaliadorimovel.details.utils.SpinnerLayout
 
-class DetailsInteractor (): {
+class DetailsInteractor(): InterfaceDetailsInteractor {
 
     interface calculationSuccess {
         fun onError()
         fun onSuccess()
     }
 
-     fun calculate
-
-    fun createSamples(): List<House> {
-        var list = listOf(House())
-        /*sampleParadgm = presenter.createSamples(true,null, paradigm_area_input, space_parking_input, finishing_pattern_input, conservation_state_input)
-        sample1 = presenter.createSamples(false, sample1_value_input, sample1_area_input, sample1_Parking_space_input, sample1_finishing_pattern_input, sample1_conservation_state_input)
-        sample2 = presenter.createSamples(false, sample2_value_input, sample2_area_input, sample2_parking_space_input, sample2_finishing_pattern_input, sample2_conservation_state_input)
-        sample3 = presenter.createSamples(false, sample3_value_input, sample3_area_input, sample3_parking_space_input, sample3_finishing_pattern_input, sample3_conservation_state_input)*/
+    override fun numberParkingSpaces(spinnerLinearFooter: SpinnerLinearSpinner, spinnerLayout: SpinnerLayout) {
+        TODO("Not yet implemented")
     }
 
-    fun convertToFloat(aux: Any?): Float {
-        val aux1: String = aux.toString()
-        return aux1.toFloat();
+    override fun finishPattern() {
+        TODO("Not yet implemented")
     }
 
-    fun convertToInt(aux: Any): Int {
-        val aux1: String = aux.toString()
-        return aux1.toInt();
-    }
-
-    private fun homogenizeFactors(){
-
-    }
-
-    private fun navigateToResult(){
+    override fun conservation_state() {
         TODO("Not yet implemented")
     }
 }

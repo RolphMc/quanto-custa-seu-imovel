@@ -5,18 +5,12 @@ import android.widget.EditText
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.example.avaliadorimovel.R
+import com.example.avaliadorimovel.details.interfaces.InterfaceDetailsPresenter
+import com.example.avaliadorimovel.details.model.House
 import kotlinx.android.synthetic.main.activity_details.*
 
 
-class DetailsActivity : AppCompatActivity(), DetailsView {
-    //aqui inicia teste
-    private var presenter = DetailsPresenter(this)
-
-    private lateinit var sampleParadgm: House
-    private lateinit var sample1: House
-    private lateinit var sample2: House
-    private lateinit var sample3: House
-
+class DetailsActivity(var interfaceDetailsPresenter: InterfaceDetailsPresenter) : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +21,7 @@ class DetailsActivity : AppCompatActivity(), DetailsView {
     }
 
      override fun setControls() {
-         TODO("Not yet implemented")
-         //Necessário criar SpinnerAdapter
+         interfaceDetailsPresenter.carregarSpinners()
      }
 
     override fun createSamples() {
