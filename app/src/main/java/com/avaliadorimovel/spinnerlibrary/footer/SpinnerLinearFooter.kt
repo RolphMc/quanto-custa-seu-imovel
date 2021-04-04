@@ -2,8 +2,8 @@ package com.sugarya.footer
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+//import android.support.v7.widget.LinearLayoutManager
+//import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.util.Log
 import android.util.TypedValue
@@ -16,7 +16,8 @@ import com.sugarya.footer.interfaces.OnFooterItemClickListener
 import com.sugarya.footer.interfaces.OnFooterItemContainerClickListener
 import com.sugarya.footer.model.LinearFooterProperty
 import com.sugarya.utils.FOOTER_MODE_SPARSE
-import com.sugarya.spinnerlibrary.R
+import com.example.avaliadorimovel.R
+
 
 
 /**
@@ -73,7 +74,7 @@ class SpinnerLinearFooter : BaseSpinnerFooter<LinearFooterProperty> {
         footerMode: FooterMode?
      */
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
-        val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.SpinnerLinearFooter)
+        val typedArray = context.obtainStyledAttributes(attributeSet, SpinnerLinearFooter)
 
         val itemHeightValue = typedArray.getDimension(R.styleable.SpinnerLinearFooter_itemHeightLinear, -1f)
         val itemHeight: Float = if (itemHeightValue == -1f) {
@@ -196,5 +197,9 @@ class SpinnerLinearFooter : BaseSpinnerFooter<LinearFooterProperty> {
         this.mOnFooterItemClickListener = onFooterItemClickListener
     }
 
+
+}
+
+class SpinnerLinearFooter {
 
 }

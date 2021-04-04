@@ -20,7 +20,7 @@ class DetailsActivity(var interfaceDetailsPresenter: InterfaceDetailsPresenter) 
     }
 
      override fun setControls() {
-         interfaceDetailsPresenter.carregarSpinners()
+         interfaceDetailsPresenter.carregarSpinnersParkingSpace(linearFooter1, number_parking_space)
      }
 
     override fun createSamples() {
