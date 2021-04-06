@@ -1,10 +1,9 @@
 package com.avaliadorimovel.details.interfaces
 
-import android.widget.RelativeLayout
-import com.avaliadorimovel.spinnerlibrary.SpinnerLayout
+import android.content.Context
 
 interface InterfaceDetailsInteractor {
-    fun dataNumberParkingSpaces(spinnerLinearFooter: List<RelativeLayout>, spinnerLayout: SpinnerLayout)
+    fun dataNumberParkingSpaces(context: Context)
     fun dataFinishPattern()
     fun dataConservationState()
 }

@@ -2,8 +2,7 @@ package com.avaliadorimovel.result
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.avaliadorimovel.R
-import com.example.avaliadorimovel.result.ResultView
+import com.avaliadorimovel.R
 
 class ResultActivity : AppCompatActivity(), ResultView {
     override fun onCreate(savedInstanceState: Bundle?) {
