@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="standard_finish">
-        <item></item>
+        <item>Nenhum</item>
         <item>Alto</item>
         <item>Superior</item>
         <item>Normal</item>

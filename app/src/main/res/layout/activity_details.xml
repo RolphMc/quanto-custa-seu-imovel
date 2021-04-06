@@ -80,7 +80,7 @@
 
 
             <Spinner
-                android:id="@+id/space_parking_input"
+                android:id="@+id/parking_space_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -198,7 +198,7 @@
                 android:textSize="20sp" />
 
             <Spinner
-                android:id="@+id/sample1_number_parking_space"
+                android:id="@+id/sample1_parking_space_input"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:gravity="right"
@@ -294,7 +294,7 @@
                 android:textSize="20sp" />
 
             <Spinner
-                android:id="@+id/sample2_number_parking_space"
+                android:id="@+id/sample2_parking_space_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -403,7 +403,7 @@
                 android:textSize="20sp" />
 
             <Spinner
-                android:id="@+id/sample3_number_parking_space"
+                android:id="@+id/sample3_parking_space_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

@@ -1,50 +1,68 @@
 package com.avaliadorimovel.details
 
-import com.avaliadorimovel.R
 import android.content.Context
 import android.widget.ArrayAdapter
+import android.widget.Spinner
+import androidx.appcompat.app.AlertDialog
+import com.avaliadorimovel.R
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsInteractor
-import com.avaliadorimovel.details.repository.ContainerParking
+import com.avaliadorimovel.details.repository.SampleItem
 
-class DetailsInteractor(): InterfaceDetailsInteractor {
-    var parkingSpacesList = arrayListOf<ContainerParking>()
 
-    interface calculationSuccess {
-        fun onError()
-        fun onSuccess()
-    }
+class DetailsInteractor: InterfaceDetailsInteractor {
 
-    override fun dataNumberParkingSpaces(context: Context){
+    override fun dataNumberParkingSpaces(context: Context, spinner: Spinner){
         ArrayAdapter.createFromResource(context,
-                ,
-                R.layout.simple_spinner_item
+                R.array.number_parking_space,
+                android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
         }
+    }
 
-//        parkingSpacesList = arrayListOf(
-//                ContainerParking(0f,"Nenhuma"),
-//                ContainerParking(95f, "0"),
-//                ContainerParking(100f,"1"),
-//                ContainerParking(105f,"2"),
-//                ContainerParking(110f,"3"),
-//                ContainerParking(115f,"4"),
-//                ContainerParking(120f,"5"),
-//                ContainerParking(125f,"6"),
-//                ContainerParking(130f,"7"),
-//                ContainerParking(135f,"8"),
-//                ContainerParking(140f,"9"),
-//                ContainerParking(145f,"10"),
+    override fun dataFinishPattern(context: Context, spinner: Spinner) {
+        ArrayAdapter.createFromResource(context,
+                R.array.standard_finish,
+                android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+    }
+
+    override fun dataConservationState(context: Context, spinner: Spinner) {
+        ArrayAdapter.createFromResource(context,
+                R.array.conservation_state,
+                android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+    }
+
+    override fun calculateFactors(sampleList: ArrayList<SampleItem>) {
+//        var listFactor = arrayListOf(
+//                //ListFactor(sampleList[0].finishPattern.onItemSelectedListener/sampleList[1].finishPattern.onItemSelectedListener
 //        )
-//        return parkingSpacesList
     }
 
-    override fun dataFinishPattern() {
-        TODO("Not yet implemented")
-    }
-
-    override fun dataConservationState() {
-        TODO("Not yet implemented")
+    override fun thereBlankfields(context: Context, sampleList: ArrayList<SampleItem>){
+        for(i in 1..sampleList.size){
+            if(
+                    sampleList[i].costSample!!.text.equals("") ||
+                    sampleList[i].areaSample.text.equals("") ||
+                    sampleList[i].parkingSpace == null ||
+                    sampleList[i].finishPattern == null ||
+                    sampleList[i].conservationState == null
+            ){
+                AlertDialog.Builder(context)
+                    .setTitle(R.string.alertdialog_title_campos_vazios)
+                    .setMessage(R.string.alertdialog_campo_vazio)
+                    .setPositiveButton(R.string.alertdialog_ok) { dialog, which -> dialog.dismiss() }
+                    .show()
+                break
+            }
+        }
     }
 }
