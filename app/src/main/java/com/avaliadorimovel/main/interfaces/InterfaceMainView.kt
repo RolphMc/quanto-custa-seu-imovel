@@ -1,6 +1,6 @@
-package com.avaliadorimovel.main
+package com.avaliadorimovel.main.interfaces
 
-interface MainView {
+interface InterfaceMainView {
     fun navigateToHelp()
     fun navigateToDetailsApartment()
     fun navigateToDetailsHouse()
