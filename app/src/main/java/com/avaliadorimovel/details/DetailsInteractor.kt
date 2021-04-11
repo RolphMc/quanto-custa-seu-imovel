@@ -3,7 +3,9 @@ package com.avaliadorimovel.details
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsInteractor
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsPresenter
 import com.avaliadorimovel.details.interfaces.repository.InterfaceFactorList
+import com.avaliadorimovel.details.interfaces.repository.InterfaceHomogenizedFactorList
 import com.avaliadorimovel.details.repository.FactorList
+import com.avaliadorimovel.details.repository.HomogenizedFactorList
 import com.avaliadorimovel.details.repository.SampleItem
 
 
@@ -29,17 +31,32 @@ class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDet
                     )
             )
         }
-        factorList.size
 
-        // [CRIAR] lógica do cálculo do fator área
-        //Fator área = áreaAmostra / áreaMotivo
-        // se < 0.7 ou >= 1.3 = Fator área ^ 0.125
-        // se não Fator área ^ 0.25
+        // [FEITO] Homogeinizar amostras
+        var homogenizedFactorList = mutableListOf<InterfaceHomogenizedFactorList>()
 
-        //        var listFactor = arrayListOf(
-        //                ListFactor(sampleList[0].finishPattern/sampleList[1].finishPattern) //Sample 1
-        //        )
+        (0..factorList.size-1).forEach { sample ->
+            homogenizedFactorList.add(
+                    HomogenizedFactorList(
+                        sampleHomogeneized = homogeneized(factorList[sample])
+                    )
+            )
+        }
 
+
+    }
+
+    private fun homogeneized(interfaceFactorList: InterfaceFactorList): Float {
+        return (
+                (interfaceFactorList.squareMeterValue*0.9)
+                        *
+                        (1+(interfaceFactorList.finishingFactor-1))
+                                +
+                                (interfaceFactorList.stateFactor-1)
+                                    +
+                                    (interfaceFactorList.parkingFactor-1)
+                                        +
+                                        (interfaceFactorList.areaFactor-1)).toFloat()
     }
 
     private fun balancingDiffArea(sample: Int, paradgm: Int): Float {

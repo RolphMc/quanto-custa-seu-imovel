@@ -1,6 +1,7 @@
 package com.avaliadorimovel.details.repository
 
 import com.avaliadorimovel.details.interfaces.repository.InterfaceFactorList
+import com.avaliadorimovel.details.interfaces.repository.InterfaceHomogenizedFactorList
 import com.avaliadorimovel.details.interfaces.repository.InterfaceSampleItem
 
 data class SampleItem(
@@ -23,3 +24,8 @@ data class FactorList(
         ): InterfaceFactorList {
 
         }
+
+data class HomogenizedFactorList (
+        override var sampleHomogeneized: Float
+        ): InterfaceHomogenizedFactorList {
+}
