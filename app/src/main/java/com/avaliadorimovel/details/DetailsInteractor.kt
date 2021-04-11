@@ -50,7 +50,11 @@ class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDet
         }
         arithmeticAverage = (arithmeticAverage / homogenizedFactorList.size).toFloat()
 
-        arithmeticAverage.plus(1)
+        // [FEITO] limites
+        var limiteSuperior: Float = arithmeticAverage*1.3f
+        var limiteInferior: Float = arithmeticAverage*0.7f
+        
+
 
     }
 
