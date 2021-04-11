@@ -28,27 +28,27 @@ class DetailsActivity : AppCompatActivity(), InterfaceDetailsView{
     }
 
     private fun loadingDataForm() {
-        paradigm_area_input.setText("1231")
-        parking_space_input.setSelection(5)
+        paradigm_area_input.setText("118")
+        parking_space_input.setSelection(3)
         finishing_pattern_input.setSelection(3)
-        conservation_state_input.setSelection(1)
+        conservation_state_input.setSelection(3)
 
-        sample1_value_input.setText("6549")
-        sample1_area_input.setText("130")
-        sample1_parking_space_input.setSelection(7)
-        sample1_finishing_pattern_input.setSelection(1)
-        sample1_conservation_state_input.setSelection(4)
+        sample1_value_input.setText("798000")
+        sample1_area_input.setText("120")
+        sample1_parking_space_input.setSelection(2)
+        sample1_finishing_pattern_input.setSelection(3)
+        sample1_conservation_state_input.setSelection(3)
 
-        sample2_value_input.setText("6549")
-        sample2_area_input.setText("130")
-        sample2_parking_space_input.setSelection(7)
-        sample2_finishing_pattern_input.setSelection(2)
-        sample2_conservation_state_input.setSelection(1)
+        sample2_value_input.setText("1454478")
+        sample2_area_input.setText("131")
+        sample2_parking_space_input.setSelection(2)
+        sample2_finishing_pattern_input.setSelection(5)
+        sample2_conservation_state_input.setSelection(3)
 
-        sample3_value_input.setText("6549")
-        sample3_area_input.setText("130")
-        sample3_parking_space_input.setSelection(7)
-        sample3_finishing_pattern_input.setSelection(4)
+        sample3_value_input.setText("1100000")
+        sample3_area_input.setText("100")
+        sample3_parking_space_input.setSelection(5)
+        sample3_finishing_pattern_input.setSelection(3)
         sample3_conservation_state_input.setSelection(3)
     }
 
@@ -77,33 +77,33 @@ class DetailsActivity : AppCompatActivity(), InterfaceDetailsView{
                         true,
                         -1f,
                         paradigm_area_input.pegarValorInt(),
-                        detailsPresenter.returnParkingFactor(parking_space_input.pegarValorInt()),
-                        detailsPresenter.finishingPatternFactor(finishing_pattern_input.pegarValorString()),
-                        detailsPresenter.finishingConservationFactor(conservation_state_input.pegarValorString())),
+                        detailsPresenter.parkingFactor(parking_space_input.pegarValorInt()),
+                        detailsPresenter.patternFactor(finishing_pattern_input.pegarValorString()),
+                        detailsPresenter.conservationFactor(conservation_state_input.pegarValorString())),
 
                 SampleItem(     //Sample1
                         false,
                         sample1_value_input.pegarValorFloat(),
                         sample1_area_input.pegarValorInt(),
-                        detailsPresenter.returnParkingFactor(sample1_parking_space_input.pegarValorInt()),
-                        detailsPresenter.finishingPatternFactor(sample1_finishing_pattern_input.pegarValorString()),
-                        detailsPresenter.finishingConservationFactor(sample1_conservation_state_input.pegarValorString())),
+                        detailsPresenter.parkingFactor(sample1_parking_space_input.pegarValorInt()),
+                        detailsPresenter.patternFactor(sample1_finishing_pattern_input.pegarValorString()),
+                        detailsPresenter.conservationFactor(sample1_conservation_state_input.pegarValorString())),
 
                 SampleItem(     //Sample2
                         false,
                         sample2_value_input.pegarValorFloat(),
                         sample2_area_input.pegarValorInt(),
-                        detailsPresenter.returnParkingFactor(sample2_parking_space_input.pegarValorInt()),
-                        detailsPresenter.finishingPatternFactor(sample2_finishing_pattern_input.pegarValorString()),
-                        detailsPresenter.finishingConservationFactor(sample2_conservation_state_input.pegarValorString())),
+                        detailsPresenter.parkingFactor(sample2_parking_space_input.pegarValorInt()),
+                        detailsPresenter.patternFactor(sample2_finishing_pattern_input.pegarValorString()),
+                        detailsPresenter.conservationFactor(sample2_conservation_state_input.pegarValorString())),
 
                 SampleItem(     //Sample3
                         false,
                         sample3_value_input.pegarValorFloat(),
                         sample3_area_input.pegarValorInt(),
-                        detailsPresenter.returnParkingFactor(sample3_parking_space_input.pegarValorInt()),
-                        detailsPresenter.finishingPatternFactor(sample3_finishing_pattern_input.pegarValorString()),
-                        detailsPresenter.finishingConservationFactor(sample3_conservation_state_input.pegarValorString())),
+                        detailsPresenter.parkingFactor(sample3_parking_space_input.pegarValorInt()),
+                        detailsPresenter.patternFactor(sample3_finishing_pattern_input.pegarValorString()),
+                        detailsPresenter.conservationFactor(sample3_conservation_state_input.pegarValorString())),
                 )
         detailsPresenter.dataValidation(sampleList)
         detailsPresenter.takeSamples(sampleList)

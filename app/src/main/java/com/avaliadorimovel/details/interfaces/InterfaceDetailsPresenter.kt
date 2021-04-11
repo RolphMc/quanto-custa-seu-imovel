@@ -8,7 +8,7 @@ interface InterfaceDetailsPresenter {
     fun onError()
     fun onSuccess()
     fun dataValidation(sampleList: ArrayList<SampleItem>)
-    fun returnParkingFactor(sampleParking: Int): Int
-    fun finishingPatternFactor(samplePattern: String): Float
-    fun finishingConservationFactor(samplePattern: String): Float
+    fun parkingFactor(sampleParking: Int): Int
+    fun patternFactor(samplePattern: String): Float
+    fun conservationFactor(sampleConservation: String): Float
 }

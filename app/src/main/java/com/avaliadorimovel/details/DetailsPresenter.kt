@@ -18,7 +18,7 @@ class DetailsPresenter (val view: DetailsActivity): InterfaceDetailsPresenter {
         }
     }
 
-    override fun returnParkingFactor(sampleParking: Int): Int {
+    override fun parkingFactor(sampleParking: Int): Int {
         return when (sampleParking) {
             0 -> 95
             1 -> 100
@@ -34,7 +34,7 @@ class DetailsPresenter (val view: DetailsActivity): InterfaceDetailsPresenter {
         }
     }
 
-    override fun finishingPatternFactor(samplePattern: String): Float{
+    override fun patternFactor(samplePattern: String): Float{
         return when (samplePattern) {
             "Econômico" -> 0.7f
             "Simples" -> 0.8375f
@@ -45,8 +45,8 @@ class DetailsPresenter (val view: DetailsActivity): InterfaceDetailsPresenter {
         }
     }
 
-    override fun finishingConservationFactor(samplePattern: String): Float{
-        return when (samplePattern) {
+    override fun conservationFactor(sampleConservation: String): Float{
+        return when (sampleConservation) {
             "Ótimo" -> 1f
             "Bom" -> 0.95f
             "Razoável" -> 0.90f

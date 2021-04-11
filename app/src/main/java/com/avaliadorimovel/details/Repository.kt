@@ -1,6 +1,6 @@
 package com.avaliadorimovel.details.repository
 
-import com.avaliadorimovel.details.interfaces.repository.InterfaceListFactor
+import com.avaliadorimovel.details.interfaces.repository.InterfaceFactorList
 import com.avaliadorimovel.details.interfaces.repository.InterfaceSampleItem
 
 data class SampleItem(
@@ -14,12 +14,12 @@ data class SampleItem(
 
         }
 
-data class ListFactor(
+data class FactorList(
         override var squareMeterValue: Float,
         override var areaFactor: Float,
         override var parkingFactor: Float,
         override var finishingFactor: Float,
         override var stateFactor: Float
-        ): InterfaceListFactor {
+        ): InterfaceFactorList {
 
         }

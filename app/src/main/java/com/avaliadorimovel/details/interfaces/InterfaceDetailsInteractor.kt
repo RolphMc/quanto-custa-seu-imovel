@@ -8,8 +8,4 @@ interface InterfaceDetailsInteractor {
 
     //tratamento de erros
     fun thereBlankfields(sampleList: ArrayList<SampleItem>): Boolean
-
-    fun dataValidation(sampleList: ArrayList<SampleItem>){
-
-    }
 }
