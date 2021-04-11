@@ -3,7 +3,6 @@ package com.avaliadorimovel.details
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsInteractor
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsPresenter
 import com.avaliadorimovel.details.interfaces.repository.InterfaceFactorList
-import com.avaliadorimovel.details.interfaces.repository.InterfaceHomogenizedFactorList
 import com.avaliadorimovel.details.repository.FactorList
 import com.avaliadorimovel.details.repository.HomogenizedFactorList
 import com.avaliadorimovel.details.repository.SampleItem
@@ -33,7 +32,7 @@ class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDet
         }
 
         // [FEITO] Homogeinizar amostras
-        var homogenizedFactorList = mutableListOf<InterfaceHomogenizedFactorList>()
+        var homogenizedFactorList = arrayListOf<HomogenizedFactorList>()
 
         (0..factorList.size-1).forEach { sample ->
             homogenizedFactorList.add(
@@ -43,6 +42,15 @@ class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDet
             )
         }
 
+        // [FEITO] tirar média aritmética
+        var arithmeticAverage: Float = 0f
+
+        for(i in 0..homogenizedFactorList.size-1) {
+            arithmeticAverage = arithmeticAverage.plus(homogenizedFactorList[i].sampleHomogeneized.toFloat())
+        }
+        arithmeticAverage = (arithmeticAverage / homogenizedFactorList.size).toFloat()
+
+        arithmeticAverage.plus(1)
 
     }
 
