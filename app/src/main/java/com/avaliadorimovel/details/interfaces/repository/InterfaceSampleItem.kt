@@ -5,6 +5,6 @@ interface InterfaceSampleItem {
     val costSample: Float?
     val areaSample: Int
     val parkingSpace: Int
-    val finishPattern: String
-    val conservationState: String
+    val finishPattern: Float
+    val conservationState: Float
 }

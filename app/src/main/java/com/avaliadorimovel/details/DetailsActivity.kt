@@ -6,24 +6,50 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.avaliadorimovel.R
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsView
 import com.avaliadorimovel.details.repository.SampleItem
 import com.avaliadorimovel.result.ResultActivity
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity(), InterfaceDetailsView{
 
-    private val detailsPresenter = DetailsPresenter(this) //resolver referência
+    val detailsPresenter = DetailsPresenter(this) //resolver referência
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
 
         setControls()
+        button_apartamento.setOnClickListener{loadingDataForm()}
         calculate_result.setOnClickListener{createSamples()}
+    }
+
+    private fun loadingDataForm() {
+        paradigm_area_input.setText("1231")
+        parking_space_input.setSelection(5)
+        finishing_pattern_input.setSelection(3)
+        conservation_state_input.setSelection(1)
+
+        sample1_value_input.setText("6549")
+        sample1_area_input.setText("130")
+        sample1_parking_space_input.setSelection(7)
+        sample1_finishing_pattern_input.setSelection(1)
+        sample1_conservation_state_input.setSelection(4)
+
+        sample2_value_input.setText("6549")
+        sample2_area_input.setText("130")
+        sample2_parking_space_input.setSelection(7)
+        sample2_finishing_pattern_input.setSelection(2)
+        sample2_conservation_state_input.setSelection(1)
+
+        sample3_value_input.setText("6549")
+        sample3_area_input.setText("130")
+        sample3_parking_space_input.setSelection(7)
+        sample3_finishing_pattern_input.setSelection(4)
+        sample3_conservation_state_input.setSelection(3)
     }
 
     override fun setControls() {
@@ -32,43 +58,63 @@ class DetailsActivity : AppCompatActivity(), InterfaceDetailsView{
             dataNumberParkingSpaces(this, spinner)
         }
 
-//        dataNumberParkingSpaces(this, parking_space_input)
-//        dataNumberParkingSpaces(this, sample1_parking_space_input)
-//        dataNumberParkingSpaces(this, sample2_parking_space_input)
-//        dataNumberParkingSpaces(this, sample3_parking_space_input)
+        listOf(finishing_pattern_input, sample1_finishing_pattern_input, sample2_finishing_pattern_input,
+                sample3_finishing_pattern_input).forEach { spinner->
+            dataFinishPattern(this, spinner)
+        }
 
-        dataFinishPattern(this, finishing_pattern_input)
-        dataFinishPattern(this, sample1_finishing_pattern_input)
-        dataFinishPattern(this, sample2_finishing_pattern_input)
-        dataFinishPattern(this, sample3_finishing_pattern_input)
+        listOf(conservation_state_input, sample1_conservation_state_input, sample2_conservation_state_input,
+                sample3_conservation_state_input).forEach { spinner->
+            dataConservationState(this, spinner)
+        }
 
-        dataConservationState(this, conservation_state_input)
-        dataConservationState(this, sample1_conservation_state_input)
-        dataConservationState(this, sample2_conservation_state_input)
-        dataConservationState(this, sample3_conservation_state_input)
      }
 
     override fun createSamples() {
         //código funcional com Spinners
         val sampleList = arrayListOf(
-            SampleItem(true, null, paradigm_area_input.pegarValorInt(), parking_space_input.pegarValorInt(), finishing_pattern_input.pegarValorString(), conservation_state_input.pegarValorString()), //Paradgma
-            SampleItem(false, sample1_value_input.pegarValorFloat(), sample1_area_input.pegarValorInt(), sample1_parking_space_input.pegarValorInt(), sample1_finishing_pattern_input.pegarValorString(), sample1_conservation_state_input.pegarValorString()), //Sample1
-            SampleItem(false, sample2_value_input.pegarValorFloat(), sample2_area_input.pegarValorInt(), sample2_parking_space_input.pegarValorInt(), sample2_finishing_pattern_input.pegarValorString(), sample2_conservation_state_input.pegarValorString()), //Sample2
-            SampleItem(false, sample3_value_input.pegarValorFloat(), sample3_area_input.pegarValorInt(), sample3_parking_space_input.pegarValorInt(), sample3_finishing_pattern_input.pegarValorString(), sample3_conservation_state_input.pegarValorString()), //Sample3
-        )
+                SampleItem(     //Paradgma
+                        true,
+                        -1f,
+                        paradigm_area_input.pegarValorInt(),
+                        detailsPresenter.returnParkingFactor(parking_space_input.pegarValorInt()),
+                        detailsPresenter.finishingPatternFactor(finishing_pattern_input.pegarValorString()),
+                        detailsPresenter.finishingConservationFactor(conservation_state_input.pegarValorString())),
 
-//        //código Teste - sem Spinners
-//        val sampleList = arrayListOf(
-//            SampleItem(true, null, paradigm_area_input, 3, "Normal", "Bom"), //Paradgma
-//            SampleItem(false, sample1_value_input, sample1_area_input, 2, "Normal", "Bom"), //Sample1
-//            SampleItem(false, sample2_value_input, sample2_area_input, 2, "Alto", "Bom"), //Sample2
-//            SampleItem(false, sample3_value_input, sample3_area_input, 5, "Normal", "Bom"), //Sample3
-//        )
+                SampleItem(     //Sample1
+                        false,
+                        sample1_value_input.pegarValorFloat(),
+                        sample1_area_input.pegarValorInt(),
+                        detailsPresenter.returnParkingFactor(sample1_parking_space_input.pegarValorInt()),
+                        detailsPresenter.finishingPatternFactor(sample1_finishing_pattern_input.pegarValorString()),
+                        detailsPresenter.finishingConservationFactor(sample1_conservation_state_input.pegarValorString())),
+
+                SampleItem(     //Sample2
+                        false,
+                        sample2_value_input.pegarValorFloat(),
+                        sample2_area_input.pegarValorInt(),
+                        detailsPresenter.returnParkingFactor(sample2_parking_space_input.pegarValorInt()),
+                        detailsPresenter.finishingPatternFactor(sample2_finishing_pattern_input.pegarValorString()),
+                        detailsPresenter.finishingConservationFactor(sample2_conservation_state_input.pegarValorString())),
+
+                SampleItem(     //Sample3
+                        false,
+                        sample3_value_input.pegarValorFloat(),
+                        sample3_area_input.pegarValorInt(),
+                        detailsPresenter.returnParkingFactor(sample3_parking_space_input.pegarValorInt()),
+                        detailsPresenter.finishingPatternFactor(sample3_finishing_pattern_input.pegarValorString()),
+                        detailsPresenter.finishingConservationFactor(sample3_conservation_state_input.pegarValorString())),
+                )
+        detailsPresenter.dataValidation(sampleList)
         detailsPresenter.takeSamples(sampleList)
     }
 
     override fun onValidationError() {
-        Snackbar.make(custom_toast_container, "Houve um erro de validação", Snackbar.LENGTH_LONG)
+        Toast.makeText(this, "Há Campos Sem Preenchimento", Toast.LENGTH_LONG).show()
+    }
+
+    fun congrats(){ //CHAMAR AO ATINGIR OBJETIVOS
+        Toast.makeText(this, "C O N G R A T U L A T I O N S", Toast.LENGTH_LONG).show()
     }
 
     fun dataNumberParkingSpaces(context: Context, spinner: Spinner){
@@ -106,12 +152,11 @@ class DetailsActivity : AppCompatActivity(), InterfaceDetailsView{
             putExtras(Bundle().apply { putFloat("result", result) })
         })
     }
-    
+
+    private fun Spinner.pegarValorInt() = if(this.selectedItem.toString().equals("Nenhum")) 0 else this.selectedItem.toString().toInt()
+    private fun Spinner.pegarValorFloat() = if(this.selectedItem.toString().equals("Nenhum")) 0f else this.selectedItem.toString().toFloat()
+    private fun Spinner.pegarValorString() = if(this.selectedItem.toString().equals("Nenhum")) "" else this.selectedItem.toString()
+    private fun EditText.pegarValorInt() = if(this.text.toString().equals("")) 0 else this.text.toString().toInt()
+    private fun EditText.pegarValorFloat() = if(this.text.toString().equals("")) 0f else this.text.toString().toFloat()
+
 }
-
-fun Spinner.pegarValorInt() = this.selectedItem.toString().toInt()
-fun Spinner.pegarValorFloat() = this.selectedItem.toString().toFloat()
-fun Spinner.pegarValorString() = this.selectedItem.toString()
-fun EditText.pegarValorInt() = this.text.toString().toInt()
-fun EditText.pegarValorFloat() = this.text.toString().toFloat()
-

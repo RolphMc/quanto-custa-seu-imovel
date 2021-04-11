@@ -3,10 +3,16 @@ package com.avaliadorimovel.details.repository
 import com.avaliadorimovel.details.interfaces.repository.InterfaceListFactor
 import com.avaliadorimovel.details.interfaces.repository.InterfaceSampleItem
 
-data class SampleItem(override val paradigm: Boolean, override val costSample: Float?, override val areaSample: Int, override val parkingSpace: Int, override val finishPattern: String, override val conservationState: String
+data class SampleItem(
+        override val paradigm: Boolean,
+        override val costSample: Float,
+        override val areaSample: Int,
+        override val parkingSpace: Int,
+        override val finishPattern: Float,
+        override val conservationState: Float
+        ) : InterfaceSampleItem {
 
-) : InterfaceSampleItem {
-}
+        }
 
 data class ListFactor(
         override var squareMeterValue: Float,
@@ -14,5 +20,6 @@ data class ListFactor(
         override var parkingFactor: Float,
         override var finishingFactor: Float,
         override var stateFactor: Float
-): InterfaceListFactor {
-}
+        ): InterfaceListFactor {
+
+        }

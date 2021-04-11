@@ -28,6 +28,7 @@
             android:background="@color/colorPrimary" />
 
         <TextView
+            android:id="@+id/button_apartamento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"

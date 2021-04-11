@@ -12,12 +12,53 @@ class DetailsPresenter (val view: DetailsActivity): InterfaceDetailsPresenter {
         detailsInteractor = DetailsInteractor(this)
     }
 
-    override fun takeSamples(sampleList: ArrayList<SampleItem>){
+    override fun dataValidation(sampleList: ArrayList<SampleItem>){
         if(detailsInteractor.thereBlankfields(sampleList)){
             view.onValidationError()
         }
+    }
 
-        val result = detailsInteractor.calculateFactors(sampleList)
+    override fun returnParkingFactor(sampleParking: Int): Int {
+        return when (sampleParking) {
+            0 -> 95
+            1 -> 100
+            2 -> 105
+            3 -> 110
+            4 -> 115
+            5 -> 120
+            6 -> 125
+            7 -> 130
+            8 -> 135
+            9 -> 140
+            else -> 0
+        }
+    }
+
+    override fun finishingPatternFactor(samplePattern: String): Float{
+        return when (samplePattern) {
+            "Econômico" -> 0.7f
+            "Simples" -> 0.8375f
+            "Normal" -> 0.975f
+            "Superior" -> 1.1125f
+            "Alto" -> 1.25f
+            else -> 0f
+        }
+    }
+
+    override fun finishingConservationFactor(samplePattern: String): Float{
+        return when (samplePattern) {
+            "Ótimo" -> 1f
+            "Bom" -> 0.95f
+            "Razoável" -> 0.90f
+            "Ruim" -> 0.85f
+            "Demolição" -> 0.8f
+            else -> 0f
+        }
+    }
+
+    override fun takeSamples(sampleList: ArrayList<SampleItem>){
+         val result = detailsInteractor.calculateFactors(sampleList)
+
         //view.navigateToResult(result)
     }
 
