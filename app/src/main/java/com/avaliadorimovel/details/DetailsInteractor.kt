@@ -43,19 +43,31 @@ class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDet
         }
 
         // [FEITO] tirar média aritmética
-        var arithmeticAverage: Float = 0f
+        var arithmeticAverage = 0.0
 
         for(i in 0..homogenizedFactorList.size-1) {
-            arithmeticAverage = arithmeticAverage.plus(homogenizedFactorList[i].sampleHomogeneized.toFloat())
+            arithmeticAverage = arithmeticAverage.plus(homogenizedFactorList[i].sampleHomogeneized)
         }
-        arithmeticAverage = (arithmeticAverage / homogenizedFactorList.size).toFloat()
+        arithmeticAverage = (arithmeticAverage / homogenizedFactorList.size)
 
         // [FEITO] limites
-        var limiteSuperior: Float = arithmeticAverage*1.3f
-        var limiteInferior: Float = arithmeticAverage*0.7f
-        
+        var upperLimite: Double = arithmeticAverage*1.3
+        var lowerLimite: Double = arithmeticAverage*0.7
 
+        //[CRIAR] Desvio padrão
+        var standardDeviation = calculatStandardDeviation(homogenizedFactorList, arithmeticAverage)
 
+        standardDeviation.equals("")
+
+    }
+
+    private fun calculatStandardDeviation(homogenizedFactorList: ArrayList<HomogenizedFactorList>, arithmeticAverage: Double): Double {
+        return Math.sqrt(
+            (
+                    Math.pow((arithmeticAverage.minus(homogenizedFactorList[0].sampleHomogeneized)), 2.0) +
+                            Math.pow((arithmeticAverage.minus(homogenizedFactorList[1].sampleHomogeneized)), 2.0) +
+                            Math.pow((arithmeticAverage.minus(homogenizedFactorList[2].sampleHomogeneized)), 2.0)
+                    )/3)
     }
 
     private fun homogeneized(interfaceFactorList: InterfaceFactorList): Float {
