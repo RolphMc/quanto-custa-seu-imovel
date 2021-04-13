@@ -2,30 +2,38 @@ package com.avaliadorimovel.details.repository
 
 import com.avaliadorimovel.details.interfaces.repository.InterfaceFactorList
 import com.avaliadorimovel.details.interfaces.repository.InterfaceHomogenizedFactorList
+import com.avaliadorimovel.details.interfaces.repository.InterfaceLimitesList
 import com.avaliadorimovel.details.interfaces.repository.InterfaceSampleItem
 
 data class SampleItem(
         override val paradigm: Boolean,
-        override val costSample: Float,
+        override val costSample: Double,
         override val areaSample: Int,
         override val parkingSpace: Int,
-        override val finishPattern: Float,
-        override val conservationState: Float
+        override val finishPattern: Double,
+        override val conservationState: Double
         ) : InterfaceSampleItem {
 
         }
 
 data class FactorList(
-        override var squareMeterValue: Float,
+        override var squareMeterValue: Double,
         override var areaFactor: Float,
-        override var parkingFactor: Float,
-        override var finishingFactor: Float,
-        override var stateFactor: Float
+        override var parkingFactor: Double,
+        override var finishingFactor: Double,
+        override var stateFactor: Double
         ): InterfaceFactorList {
 
         }
 
-data class HomogenizedFactorList (
-        override var sampleHomogeneized: Float
+data class HomogenizeFactorList(
+        override var sampleHomogeneized: Double
         ): InterfaceHomogenizedFactorList {
 }
+
+data class LimitesList(
+        override var upperLimite: Double,
+        override var lowerLimite: Double
+): InterfaceLimitesList {
+}
+

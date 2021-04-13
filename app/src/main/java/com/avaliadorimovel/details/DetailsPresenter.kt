@@ -2,6 +2,9 @@ package com.avaliadorimovel.details
 
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsInteractor
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsPresenter
+import com.avaliadorimovel.details.interfaces.repository.InterfaceFactorList
+import com.avaliadorimovel.details.repository.HomogenizeFactorList
+import com.avaliadorimovel.details.repository.LimitesList
 import com.avaliadorimovel.details.repository.SampleItem
 
 class DetailsPresenter (val view: DetailsActivity): InterfaceDetailsPresenter {
@@ -18,48 +21,33 @@ class DetailsPresenter (val view: DetailsActivity): InterfaceDetailsPresenter {
         }
     }
 
-    override fun parkingFactor(sampleParking: Int): Int {
-        return when (sampleParking) {
-            0 -> 95
-            1 -> 100
-            2 -> 105
-            3 -> 110
-            4 -> 115
-            5 -> 120
-            6 -> 125
-            7 -> 130
-            8 -> 135
-            9 -> 140
-            else -> 0
-        }
+    override fun treatParkingInput(sampleParking: Int): Int {
+        return detailsInteractor.convertParkingFactor(sampleParking)
     }
 
-    override fun patternFactor(samplePattern: String): Float{
-        return when (samplePattern) {
-            "Econômico" -> 0.7f
-            "Simples" -> 0.8375f
-            "Normal" -> 0.975f
-            "Superior" -> 1.1125f
-            "Alto" -> 1.25f
-            else -> 0f
-        }
+    override fun treatPatternInput(samplePattern: String): Double{
+        return detailsInteractor.convertPatternFactor(samplePattern)
     }
 
-    override fun conservationFactor(sampleConservation: String): Float{
-        return when (sampleConservation) {
-            "Ótimo" -> 1f
-            "Bom" -> 0.95f
-            "Razoável" -> 0.90f
-            "Ruim" -> 0.85f
-            "Demolição" -> 0.8f
-            else -> 0f
-        }
+    override fun treatConservationInput(sampleConservation: String): Double{
+        return detailsInteractor.convertConservationFactor(sampleConservation)
     }
 
     override fun takeSamples(sampleList: ArrayList<SampleItem>){
-         val result = detailsInteractor.calculateFactors(sampleList)
 
-        //view.navigateToResult(result)
+        val factorList: MutableList<InterfaceFactorList> = detailsInteractor.calculateFactors(sampleList)
+
+        val homogenizeFactorList: MutableList<HomogenizeFactorList> = detailsInteractor.homogenizeTheSample(factorList)
+
+        val arithmeticMean: Double = detailsInteractor.getArithmeticMean(homogenizeFactorList)
+
+        val limits: LimitesList = detailsInteractor.calculateTheLimits(arithmeticMean)
+
+        val standardDeviation: Double = detailsInteractor.calculateStandardDeviation(homogenizeFactorList, arithmeticMean)
+
+        val result: Double = 0.0 //aguardando
+
+        view.navigateToResult(result)
     }
 
     override fun onError() {

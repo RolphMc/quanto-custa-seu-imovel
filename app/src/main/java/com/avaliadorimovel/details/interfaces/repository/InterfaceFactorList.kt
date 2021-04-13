@@ -1,9 +1,9 @@
 package com.avaliadorimovel.details.interfaces.repository
 
 interface InterfaceFactorList {
-    var squareMeterValue: Float
+    var squareMeterValue: Double
     var areaFactor: Float
-    var parkingFactor: Float
-    var finishingFactor: Float
-    var stateFactor: Float
+    var parkingFactor: Double
+    var finishingFactor: Double
+    var stateFactor: Double
 }

@@ -1,5 +1,5 @@
 package com.avaliadorimovel.details.interfaces.repository
 
 interface InterfaceHomogenizedFactorList {
-    var sampleHomogeneized: Float
+    var sampleHomogeneized: Double
 }

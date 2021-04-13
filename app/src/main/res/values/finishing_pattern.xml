@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="standard_finish">
-        <item>Nenhum</item>
-        <item>Alto</item>
-        <item>Superior</item>
-        <item>Normal</item>
-        <item>Simples</item>
-        <item>Econômico</item>
+        <item>Nenhum</item>     0
+        <item>Econômico</item>  1
+        <item>Simples</item>    2
+        <item>Normal</item>     3
+        <item>Superior</item>   4
+        <item>Alto</item>       5
     </string-array>
 </resources>

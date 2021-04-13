@@ -4,83 +4,85 @@ import com.avaliadorimovel.details.interfaces.InterfaceDetailsInteractor
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsPresenter
 import com.avaliadorimovel.details.interfaces.repository.InterfaceFactorList
 import com.avaliadorimovel.details.repository.FactorList
-import com.avaliadorimovel.details.repository.HomogenizedFactorList
+import com.avaliadorimovel.details.repository.HomogenizeFactorList
+import com.avaliadorimovel.details.repository.LimitesList
 import com.avaliadorimovel.details.repository.SampleItem
 
 
 class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDetailsInteractor {
 
-    override fun calculateFactors(sampleList: ArrayList<SampleItem>) {
-        sampleList.size
+    override fun calculateFactors(sampleList: ArrayList<SampleItem>): MutableList<InterfaceFactorList> {
 
-        // [FEITO] converter em fatores itens dos Spinners
-
-        // [FEITO] Fatorar diferenças características das amostras
+        // Fatorar diferenças características das amostras
         val paradgm: SampleItem = sampleList[0] //paradgma
         var factorList = mutableListOf<InterfaceFactorList>()
 
-        (1..sampleList.size-1).forEach { sample ->
+        (1..sampleList.size - 1).forEach { sample ->
             factorList.add(
                     FactorList(
-                    squareMeterValue = sampleList[sample].costSample / sampleList[sample].areaSample,
-                    areaFactor = balancingDiffArea(sampleList[sample].areaSample, paradgm.areaSample),
-                    parkingFactor = sampleList[sample].parkingSpace.toFloat() / paradgm.parkingSpace.toFloat(),
-                    finishingFactor = sampleList[sample].finishPattern / paradgm.finishPattern,
-                    stateFactor = sampleList[sample].conservationState / paradgm.conservationState
+                            squareMeterValue = sampleList[sample].costSample / sampleList[sample].areaSample,
+                            areaFactor = balancingDiffArea(sampleList[sample].areaSample, paradgm.areaSample),
+                            parkingFactor = paradgm.parkingSpace.toDouble()/sampleList[sample].parkingSpace.toDouble(),
+                            finishingFactor = paradgm.finishPattern / sampleList[sample].finishPattern,
+                            stateFactor = paradgm.conservationState / sampleList[sample].conservationState
                     )
             )
         }
+        return factorList
+    }
 
-        // [FEITO] Homogeinizar amostras
-        var homogenizedFactorList = arrayListOf<HomogenizedFactorList>()
+    override fun calculateStandardDeviation(homogenizeFactorList: MutableList<HomogenizeFactorList>, arithmeticMean: Double): Double {
+        val pow = mutableListOf<Double>()
 
-        (0..factorList.size-1).forEach { sample ->
+        (0..homogenizeFactorList.size-1).forEach { factor ->
+            pow.add(Math.pow((arithmeticMean.minus(homogenizeFactorList[factor].sampleHomogeneized)), 2.0))
+        }
+
+        return Math.sqrt(pow.sum().div(homogenizeFactorList.size-1))
+
+
+//        return Math.sqrt(
+//                (
+//                        Math.pow((homogenizeFactorList[0].sampleHomogeneized.minus(arithmeticMean)), 2.0) +
+//                        Math.pow((homogenizeFactorList[1].sampleHomogeneized).minus(arithmeticMean), 2.0) +
+//                        Math.pow((homogenizeFactorList[2].sampleHomogeneized).minus(arithmeticMean), 2.0)
+//                        )/3)
+    }
+
+    override fun homogenizeTheSample(factorList: MutableList<InterfaceFactorList>): MutableList<HomogenizeFactorList> {
+        var homogenizedFactorList = mutableListOf<HomogenizeFactorList>()
+
+        (0..factorList.size-1).forEach { factor ->
             homogenizedFactorList.add(
-                    HomogenizedFactorList(
-                        sampleHomogeneized = homogeneized(factorList[sample])
+                    HomogenizeFactorList((
+                            factorList[factor].squareMeterValue *0.9)
+                            *
+                            (1+(factorList[factor].finishingFactor-1)
+                            +
+                            (factorList[factor].stateFactor-1)
+                            +
+                            (factorList[factor].parkingFactor-1)
+                            +
+                            (factorList[factor].areaFactor-1))
                     )
             )
         }
+        return homogenizedFactorList
+    }
 
-        // [FEITO] tirar média aritmética
-        var arithmeticAverage = 0.0
+    override fun getArithmeticMean(homogenizeFactorList: MutableList<HomogenizeFactorList>): Double {
+        var arithmeticMean = 0.0
 
-        for(i in 0..homogenizedFactorList.size-1) {
-            arithmeticAverage = arithmeticAverage.plus(homogenizedFactorList[i].sampleHomogeneized)
+        for(i in 0..homogenizeFactorList.size-1) {
+            arithmeticMean = arithmeticMean.plus(homogenizeFactorList[i].sampleHomogeneized)
         }
-        arithmeticAverage = (arithmeticAverage / homogenizedFactorList.size)
+        arithmeticMean = (arithmeticMean / homogenizeFactorList.size)
 
-        // [FEITO] limites
-        var upperLimite: Double = arithmeticAverage*1.3
-        var lowerLimite: Double = arithmeticAverage*0.7
-
-        //[CRIAR] Desvio padrão
-        var standardDeviation = calculatStandardDeviation(homogenizedFactorList, arithmeticAverage)
-
-        standardDeviation.equals("")
-
+        return arithmeticMean
     }
 
-    private fun calculatStandardDeviation(homogenizedFactorList: ArrayList<HomogenizedFactorList>, arithmeticAverage: Double): Double {
-        return Math.sqrt(
-            (
-                    Math.pow((arithmeticAverage.minus(homogenizedFactorList[0].sampleHomogeneized)), 2.0) +
-                            Math.pow((arithmeticAverage.minus(homogenizedFactorList[1].sampleHomogeneized)), 2.0) +
-                            Math.pow((arithmeticAverage.minus(homogenizedFactorList[2].sampleHomogeneized)), 2.0)
-                    )/3)
-    }
-
-    private fun homogeneized(interfaceFactorList: InterfaceFactorList): Float {
-        return (
-                (interfaceFactorList.squareMeterValue*0.9)
-                        *
-                        (1+(interfaceFactorList.finishingFactor-1))
-                                +
-                                (interfaceFactorList.stateFactor-1)
-                                    +
-                                    (interfaceFactorList.parkingFactor-1)
-                                        +
-                                        (interfaceFactorList.areaFactor-1)).toFloat()
+    override fun calculateTheLimits(arithmeticMean: Double): LimitesList {
+        return LimitesList(arithmeticMean*1.3, arithmeticMean*0.7)
     }
 
     private fun balancingDiffArea(sample: Int, paradgm: Int): Float {
@@ -99,6 +101,44 @@ class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDet
                     it.parkingSpace.equals(0) ||
                     it.finishPattern.equals("") ||
                     it.conservationState.equals("")
+        }
+    }
+
+    override fun convertPatternFactor(samplePattern: String): Double {
+        return when (samplePattern) {
+            "Econômico" -> 0.7
+            "Simples" -> 0.8375
+            "Normal" -> 0.975
+            "Superior" -> 1.1125
+            "Alto" -> 1.25
+            else -> 0.0
+        }
+    }
+
+    override fun convertConservationFactor(sampleConservation: String): Double {
+        return when (sampleConservation) {
+            "Ótimo" -> 1.0
+            "Bom" -> 0.95
+            "Razoável" -> 0.90
+            "Ruim" -> 0.85
+            "Demolição" -> 0.8
+            else -> 0.0
+        }
+    }
+
+    override fun convertParkingFactor(sampleParking: Int): Int {
+        return when (sampleParking) {
+            0 -> 95
+            1 -> 100
+            2 -> 105
+            3 -> 110
+            4 -> 115
+            5 -> 120
+            6 -> 125
+            7 -> 130
+            8 -> 135
+            9 -> 140
+            else -> 0
         }
     }
 }

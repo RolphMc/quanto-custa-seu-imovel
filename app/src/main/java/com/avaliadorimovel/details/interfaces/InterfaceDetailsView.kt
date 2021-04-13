@@ -4,5 +4,5 @@ interface InterfaceDetailsView {
     fun setControls()
     fun createSamples()
     fun onValidationError()
-    fun navigateToResult(result: Float)
+    fun navigateToResult(result: Double)
 }
