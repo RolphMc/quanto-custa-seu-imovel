@@ -2,7 +2,7 @@ package com.avaliadorimovel.details
 
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsInteractor
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsPresenter
-import com.avaliadorimovel.details.interfaces.repository.InterfaceFactorList
+import com.avaliadorimovel.details.interfaces.models.InterfaceFactorList
 import com.avaliadorimovel.details.repository.ConfidenceIntervalData
 import com.avaliadorimovel.details.repository.HomogenizeFactorList
 import com.avaliadorimovel.details.repository.LimitsData
@@ -47,7 +47,7 @@ class DetailsPresenter (val view: DetailsActivity): InterfaceDetailsPresenter {
 
         val standardDeviation: Double = detailsInteractor.calculateStandardDeviation(homogenizeFactorList, arithmeticMean)
 
-        val coefficientOfVariation: Double = detailsInteractor.calcutaleCoefficienteOfVariation(standardDeviation, arithmeticMean)
+        val coefficientOfVariation: Double = detailsInteractor.calcutaleCoefficienteOfVariation(standardDeviation, arithmeticMean) //usar em breve
 
         val tStudentGrade2: Double = detailsInteractor.calculateTStudentG2(homogenizeFactorList.size-1)
 

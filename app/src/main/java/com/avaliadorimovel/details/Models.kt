@@ -1,6 +1,6 @@
 package com.avaliadorimovel.details.repository
 
-import com.avaliadorimovel.details.interfaces.repository.*
+import com.avaliadorimovel.details.interfaces.models.*
 
 data class SampleItem(
         override val paradigm: Boolean,

@@ -1,6 +1,6 @@
 package com.avaliadorimovel.details.interfaces
 
-import com.avaliadorimovel.details.interfaces.repository.InterfaceFactorList
+import com.avaliadorimovel.details.interfaces.models.InterfaceFactorList
 import com.avaliadorimovel.details.repository.ConfidenceIntervalData
 import com.avaliadorimovel.details.repository.HomogenizeFactorList
 import com.avaliadorimovel.details.repository.LimitsData

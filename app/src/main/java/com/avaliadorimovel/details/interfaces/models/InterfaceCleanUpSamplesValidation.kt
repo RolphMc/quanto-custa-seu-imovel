@@ -1,4 +1,4 @@
-package com.avaliadorimovel.details.interfaces.repository
+package com.avaliadorimovel.details.interfaces.models
 
 interface InterfaceCleanUpSamplesValidation {
     var inside: Boolean
