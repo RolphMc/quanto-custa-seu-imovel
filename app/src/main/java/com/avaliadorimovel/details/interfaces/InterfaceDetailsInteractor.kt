@@ -21,8 +21,10 @@ interface InterfaceDetailsInteractor {
     fun calcutaleCoefficienteOfVariation(standardDeviation: Double, arithmeticMean: Double): Double
     fun calculateTStudentG2(tStudent: Int): Double
     fun calculateConfidenceInterval(standardDeviation: Double, tStudentGrade2: Double, size: Int, arithmeticMean: Double): ConfidenceIntervalData
+    fun roundValue(arithmeticMean: Double): Double
+    fun checkReliability(higherConfidenceIinterval: Double): Double
+    fun calculateValueOfThePropety(unitaryValue: Double, areaSample: Int, reliability: Double): Double
 
     //tratamento de erros
     fun thereBlankfields(sampleList: ArrayList<SampleItem>): Boolean
-
 }

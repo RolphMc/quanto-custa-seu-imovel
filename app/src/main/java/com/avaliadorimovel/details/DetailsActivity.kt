@@ -148,9 +148,9 @@ class DetailsActivity : AppCompatActivity(), InterfaceDetailsView{
         }
     }
 
-    override fun navigateToResult(result: Double) {
+    override fun navigateToResult(result: String) {
         startActivity(Intent(this, ResultActivity::class.java).apply {
-            putExtras(Bundle().apply { putDouble("result", result) })
+            putExtras(Bundle().apply { putString("result", result) })
         })
     }
 

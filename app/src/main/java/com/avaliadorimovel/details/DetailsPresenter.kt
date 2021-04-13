@@ -7,6 +7,7 @@ import com.avaliadorimovel.details.repository.ConfidenceIntervalData
 import com.avaliadorimovel.details.repository.HomogenizeFactorList
 import com.avaliadorimovel.details.repository.LimitsData
 import com.avaliadorimovel.details.repository.SampleItem
+import java.text.DecimalFormat
 
 class DetailsPresenter (val view: DetailsActivity): InterfaceDetailsPresenter {
 
@@ -42,7 +43,7 @@ class DetailsPresenter (val view: DetailsActivity): InterfaceDetailsPresenter {
 
         val arithmeticMean: Double = detailsInteractor.getArithmeticMean(homogenizeFactorList)
 
-        val limits: LimitsData = detailsInteractor.calculateTheLimits(arithmeticMean)
+        val limits: LimitsData = detailsInteractor.calculateTheLimits(arithmeticMean) //usar em breve
 
         val standardDeviation: Double = detailsInteractor.calculateStandardDeviation(homogenizeFactorList, arithmeticMean)
 
@@ -52,9 +53,15 @@ class DetailsPresenter (val view: DetailsActivity): InterfaceDetailsPresenter {
 
         val confidenceInterval: ConfidenceIntervalData = detailsInteractor.calculateConfidenceInterval(standardDeviation, tStudentGrade2, homogenizeFactorList.size, arithmeticMean)
 
-        
+        val unitaryValue: Double = detailsInteractor.roundValue(arithmeticMean)
 
-        val result: Double = 0.0 //aguardando
+        val reliability: Double = detailsInteractor.checkReliability(confidenceInterval.higherConfidenceIinterval)
+
+        val marketValueOfThePropety: Double = detailsInteractor.calculateValueOfThePropety(unitaryValue,sampleList[0].areaSample, reliability)
+
+        val decimalFormat = DecimalFormat("#,000.00")
+
+        val result: String = decimalFormat.format(detailsInteractor.roundValue(marketValueOfThePropety))
 
         view.navigateToResult(result)
     }

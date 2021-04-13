@@ -69,7 +69,7 @@
     <string name="alertdialog_ok">Ok</string>
     <string name="alertdialog_title_campos_vazios">Campos Vázios</string>
     <string name="know_more">Saiba Mais</string>
-    <string name="outlier_title">Amostra Discrepante</string>
+    <string name="divergent_sample">Amostra Discrepante</string>
     <string name="outlier_sample1">Amostra 1</string>
     <string name="outlier_sample2">A amostra 2 está em desarmonia com as amostras restantes, podendo gerar uma variação do
         resultado acima de 15% para mais ou para menos, gostaria de substituí-la?</string>

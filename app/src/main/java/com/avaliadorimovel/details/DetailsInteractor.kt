@@ -4,6 +4,7 @@ import com.avaliadorimovel.details.interfaces.InterfaceDetailsInteractor
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsPresenter
 import com.avaliadorimovel.details.interfaces.repository.InterfaceFactorList
 import com.avaliadorimovel.details.repository.*
+import kotlin.math.roundToInt
 
 
 class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDetailsInteractor {
@@ -36,14 +37,6 @@ class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDet
         }
 
         return Math.sqrt(pow.sum().div(homogenizeFactorList.size-1))
-
-
-//        return Math.sqrt(
-//                (
-//                        Math.pow((homogenizeFactorList[0].sampleHomogeneized.minus(arithmeticMean)), 2.0) +
-//                        Math.pow((homogenizeFactorList[1].sampleHomogeneized).minus(arithmeticMean), 2.0) +
-//                        Math.pow((homogenizeFactorList[2].sampleHomogeneized).minus(arithmeticMean), 2.0)
-//                        )/3)
     }
 
     override fun calcutaleCoefficienteOfVariation(standardDeviation: Double, arithmeticMean: Double): Double {
@@ -57,6 +50,18 @@ class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDet
         val bottom = arithmeticMean - result
 
         return ConfidenceIntervalData(result, higher, bottom)
+    }
+
+    override fun roundValue(value: Double): Double {
+        return value.roundToInt().toDouble()
+    }
+
+    override fun checkReliability(higherConfidenceIinterval: Double): Double {
+        return if(higherConfidenceIinterval > 0.15) 1.15 else higherConfidenceIinterval
+    }
+
+    override fun calculateValueOfThePropety(unitaryValue: Double, areaSample: Int, reliability: Double): Double {
+        return unitaryValue * areaSample * reliability
     }
 
     override fun calculateTStudentG2(tStudent: Int): Double {
