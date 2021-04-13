@@ -2,17 +2,23 @@ package com.avaliadorimovel.result
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.avaliadorimovel.R
-import com.example.avaliadorimovel.result.ResultView
+import com.avaliadorimovel.R
+import com.avaliadorimovel.result.interfaces.InterfaceResultView
+import kotlinx.android.synthetic.main.activity_result.*
 
-class ResultActivity : AppCompatActivity(), ResultView {
+class ResultActivity : AppCompatActivity(), InterfaceResultView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
+        var extras: Bundle? = getIntent().getExtras()
+
+        if (extras != null) {
+            resultado_valor.setText(extras.getString("result"))
+        }
     }
 
     override fun showResult() {
-        TODO("Not yet implemented")
+
     }
 
     override fun navigateToMain() {

@@ -4,10 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.avaliadorimovel.details.DetailsActivity
-import com.example.avaliadorimovel.R
+import com.avaliadorimovel.R
+import com.avaliadorimovel.main.interfaces.InterfaceMainView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), MainView {
+class MainActivity : AppCompatActivity(), InterfaceMainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

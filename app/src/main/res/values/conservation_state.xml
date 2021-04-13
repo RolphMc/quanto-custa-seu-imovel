@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="quality_level">
-        <item></item>
-        <item>Ótimo</item>
-        <item>Bom</item>
-        <item>Razoável</item>
-        <item>Ruim</item>
-        <item>Demolição</item>
+    <string-array name="conservation_state">
+        <item>Nenhum</item>     0
+        <item>Demolição</item>  1
+        <item>Ruim</item>       2
+        <item>Razoável</item>   3
+        <item>Bom</item>        4
+        <item>Ótimo</item>      5
     </string-array>
 </resources>

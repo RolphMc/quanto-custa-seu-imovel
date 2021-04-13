@@ -28,6 +28,7 @@
             android:background="@color/colorPrimary" />
 
         <TextView
+            android:id="@+id/button_apartamento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -80,20 +81,12 @@
 
 
             <Spinner
-                android:id="@+id/number_parking_space"
+                android:id="@+id/parking_space_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
                 android:textSize="25sp" />
-                <com.sugarya.footer.SpinnerLinearFooter
-                    android:id="@+id/linearFooter1"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    app:footerModeLinear="translate"
-                    app:itemHeightLinear="40dp"
-                    app:textLinear="number_parking_space"/>
-
         </TableRow>
 
         <TableRow
@@ -206,7 +199,7 @@
                 android:textSize="20sp" />
 
             <Spinner
-                android:id="@+id/sample1_number_parking_space"
+                android:id="@+id/sample1_parking_space_input"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:gravity="right"
@@ -302,7 +295,7 @@
                 android:textSize="20sp" />
 
             <Spinner
-                android:id="@+id/sample2_number_parking_space"
+                android:id="@+id/sample2_parking_space_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -411,7 +404,7 @@
                 android:textSize="20sp" />
 
             <Spinner
-                android:id="@+id/sample3_number_parking_space"
+                android:id="@+id/sample3_parking_space_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
