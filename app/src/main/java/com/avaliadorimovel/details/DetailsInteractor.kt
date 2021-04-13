@@ -3,10 +3,7 @@ package com.avaliadorimovel.details
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsInteractor
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsPresenter
 import com.avaliadorimovel.details.interfaces.repository.InterfaceFactorList
-import com.avaliadorimovel.details.repository.FactorList
-import com.avaliadorimovel.details.repository.HomogenizeFactorList
-import com.avaliadorimovel.details.repository.LimitesList
-import com.avaliadorimovel.details.repository.SampleItem
+import com.avaliadorimovel.details.repository.*
 
 
 class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDetailsInteractor {
@@ -49,6 +46,40 @@ class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDet
 //                        )/3)
     }
 
+    override fun calcutaleCoefficienteOfVariation(standardDeviation: Double, arithmeticMean: Double): Double {
+        return standardDeviation.div(arithmeticMean)
+    }
+
+    override fun calculateConfidenceInterval(standardDeviation: Double, tStudentGrade2: Double, size: Int, arithmeticMean: Double): ConfidenceIntervalData {
+
+        val result = tStudentGrade2*(standardDeviation/Math.pow((size-1.0), 0.5))
+        val higher = arithmeticMean + result
+        val bottom = arithmeticMean - result
+
+        return ConfidenceIntervalData(result, higher, bottom)
+    }
+
+    override fun calculateTStudentG2(tStudent: Int): Double {
+        return tStudent(tStudent)
+    }
+
+    private fun tStudent(tStudent: Int): Double {
+        return when (tStudent){
+            1 -> 3.078
+            2 -> 1.886
+            3 -> 1.638
+            4 -> 1.533
+            5 -> 1.476
+            6 -> 1.440
+            7 -> 1.415
+            8 -> 1.397
+            9 -> 1.383
+            10 -> 1.372
+            else -> 0.0
+        }
+
+    }
+
     override fun homogenizeTheSample(factorList: MutableList<InterfaceFactorList>): MutableList<HomogenizeFactorList> {
         var homogenizedFactorList = mutableListOf<HomogenizeFactorList>()
 
@@ -81,8 +112,8 @@ class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDet
         return arithmeticMean
     }
 
-    override fun calculateTheLimits(arithmeticMean: Double): LimitesList {
-        return LimitesList(arithmeticMean*1.3, arithmeticMean*0.7)
+    override fun calculateTheLimits(arithmeticMean: Double): LimitsData {
+        return LimitsData(arithmeticMean*1.3, arithmeticMean*0.7)
     }
 
     private fun balancingDiffArea(sample: Int, paradgm: Int): Float {

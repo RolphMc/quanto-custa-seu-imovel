@@ -1,9 +1,6 @@
 package com.avaliadorimovel.details.repository
 
-import com.avaliadorimovel.details.interfaces.repository.InterfaceFactorList
-import com.avaliadorimovel.details.interfaces.repository.InterfaceHomogenizedFactorList
-import com.avaliadorimovel.details.interfaces.repository.InterfaceLimitesList
-import com.avaliadorimovel.details.interfaces.repository.InterfaceSampleItem
+import com.avaliadorimovel.details.interfaces.repository.*
 
 data class SampleItem(
         override val paradigm: Boolean,
@@ -31,9 +28,17 @@ data class HomogenizeFactorList(
         ): InterfaceHomogenizedFactorList {
 }
 
-data class LimitesList(
+data class LimitsData(
         override var upperLimite: Double,
         override var lowerLimite: Double
 ): InterfaceLimitesList {
 }
+
+data class ConfidenceIntervalData(
+        override var resultConfidenceIinterval: Double,
+        override var higherConfidenceIinterval: Double,
+        override var bottomConfidenceIinterval: Double
+): InterfaceConfidenceIntervalData {
+}
+
 
