@@ -3,6 +3,7 @@ package com.avaliadorimovel.details
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsInteractor
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsPresenter
 import com.avaliadorimovel.details.interfaces.models.InterfaceFactorList
+import com.avaliadorimovel.details.interfaces.services.InterfaceConversionHelper
 import com.avaliadorimovel.details.repository.*
 import com.avaliadorimovel.details.service.ConversionHelper
 import kotlin.math.roundToInt
@@ -10,7 +11,11 @@ import kotlin.math.roundToInt
 
 class DetailsInteractor (val presenter: InterfaceDetailsPresenter): InterfaceDetailsInteractor {
 
-    private val conversionHelper = ConversionHelper()
+    var conversionHelper: InterfaceConversionHelper
+
+    init {
+        conversionHelper = ConversionHelper(this)
+    }
 
     override fun convertPatternFactor(samplePattern: String): Double {
         return conversionHelper.patternFactor(samplePattern)

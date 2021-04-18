@@ -1,8 +1,9 @@
 package com.avaliadorimovel.details.service
 
+import com.avaliadorimovel.details.DetailsInteractor
 import com.avaliadorimovel.details.interfaces.services.InterfaceConversionHelper
 
-class ConversionHelper: InterfaceConversionHelper {
+class ConversionHelper(val interactor: DetailsInteractor): InterfaceConversionHelper {
 
     override fun patternFactor(samplePattern: String): Double {
         return when (samplePattern) {
