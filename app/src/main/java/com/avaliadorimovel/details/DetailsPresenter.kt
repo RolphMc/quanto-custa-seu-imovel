@@ -1,6 +1,6 @@
 package com.avaliadorimovel.details
 
-import com.avaliadorimovel.details.interfaces.InterfaceDetailsInteractor
+import com.avaliadorimovel.details.interfaces.InterfaceDetailsInteract
 import com.avaliadorimovel.details.interfaces.InterfaceDetailsPresenter
 import com.avaliadorimovel.details.interfaces.models.InterfaceFactorList
 import com.avaliadorimovel.details.repository.ConfidenceIntervalData
@@ -11,57 +11,57 @@ import java.text.DecimalFormat
 
 class DetailsPresenter (val view: DetailsActivity): InterfaceDetailsPresenter {
 
-    var detailsInteractor: InterfaceDetailsInteractor
+    var detailsInteract: InterfaceDetailsInteract
 
     init {
-        detailsInteractor = DetailsInteractor(this)
+        detailsInteract = DetailsInteract(this)
     }
 
     override fun dataValidation(sampleList: ArrayList<SampleItem>){
-        if(detailsInteractor.thereBlankfields(sampleList)){
+        if(detailsInteract.thereBlankfields(sampleList)){
             view.onValidationError()
         }
     }
 
     override fun treatParkingInput(sampleParking: Int): Int {
-        return detailsInteractor.convertParkingFactor(sampleParking)
+        return detailsInteract.convertParkingFactor(sampleParking)
     }
 
     override fun treatPatternInput(samplePattern: String): Double{
-        return detailsInteractor.convertPatternFactor(samplePattern)
+        return detailsInteract.convertPatternFactor(samplePattern)
     }
 
     override fun treatConservationInput(sampleConservation: String): Double{
-        return detailsInteractor.convertConservationFactor(sampleConservation)
+        return detailsInteract.convertConservationFactor(sampleConservation)
     }
 
     override fun takeSamples(sampleList: ArrayList<SampleItem>){
 
-        val factorList: MutableList<InterfaceFactorList> = detailsInteractor.calculateFactors(sampleList)
+        val factorList: MutableList<InterfaceFactorList> = detailsInteract.calculateFactors(sampleList)
 
-        val homogenizeFactorList: MutableList<HomogenizeFactorList> = detailsInteractor.homogenizeTheSample(factorList)
+        val homogenizeFactorList: MutableList<HomogenizeFactorList> = detailsInteract.homogenizeTheSample(factorList)
 
-        val arithmeticMean: Double = detailsInteractor.getArithmeticMean(homogenizeFactorList)
+        val arithmeticMean: Double = detailsInteract.getArithmeticMean(homogenizeFactorList)
 
-        val limits: LimitsData = detailsInteractor.calculateTheLimits(arithmeticMean) //usar em breve
+        val limits: LimitsData = detailsInteract.calculateTheLimits(arithmeticMean) //usar em breve
 
-        val standardDeviation: Double = detailsInteractor.calculateStandardDeviation(homogenizeFactorList, arithmeticMean)
+        val standardDeviation: Double = detailsInteract.calculateStandardDeviation(homogenizeFactorList, arithmeticMean)
 
-        val coefficientOfVariation: Double = detailsInteractor.calcutaleCoefficienteOfVariation(standardDeviation, arithmeticMean) //usar em breve
+        val coefficientOfVariation: Double = detailsInteract.calcutaleCoefficienteOfVariation(standardDeviation, arithmeticMean) //usar em breve
 
-        val tStudentGrade2: Double = detailsInteractor.calculateTStudentG2(homogenizeFactorList.size-1)
+        val tStudentGrade2: Double = detailsInteract.calculateTStudentG2(homogenizeFactorList.size-1)
 
-        val confidenceInterval: ConfidenceIntervalData = detailsInteractor.calculateConfidenceInterval(standardDeviation, tStudentGrade2, homogenizeFactorList.size, arithmeticMean)
+        val confidenceInterval: ConfidenceIntervalData = detailsInteract.calculateConfidenceInterval(standardDeviation, tStudentGrade2, homogenizeFactorList.size, arithmeticMean)
 
-        val unitaryValue: Double = detailsInteractor.roundValue(arithmeticMean)
+        val unitaryValue: Double = detailsInteract.roundValue(arithmeticMean)
 
-        val reliability: Double = detailsInteractor.checkReliability(confidenceInterval.higherConfidenceIinterval)
+        val reliability: Double = detailsInteract.checkReliability(confidenceInterval.higherConfidenceIinterval)
 
-        val marketValueOfThePropety: Double = detailsInteractor.calculateValueOfThePropety(unitaryValue,sampleList[0].areaSample, reliability)
+        val marketValueOfThePropety: Double = detailsInteract.calculateValueOfThePropety(unitaryValue,sampleList[0].areaSample, reliability)
 
         val decimalFormat = DecimalFormat("#,000.00")
 
-        val result: String = decimalFormat.format(detailsInteractor.roundValue(marketValueOfThePropety))
+        val result: String = decimalFormat.format(detailsInteract.roundValue(marketValueOfThePropety))
 
         view.navigateToResult(result)
     }

@@ -1,4 +1,4 @@
 package com.avaliadorimovel.main
 
-class MainInteractor {
+class MainInteract {
 }

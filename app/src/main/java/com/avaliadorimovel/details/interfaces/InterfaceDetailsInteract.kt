@@ -6,7 +6,7 @@ import com.avaliadorimovel.details.repository.HomogenizeFactorList
 import com.avaliadorimovel.details.repository.LimitsData
 import com.avaliadorimovel.details.repository.SampleItem
 
-interface InterfaceDetailsInteractor {
+interface InterfaceDetailsInteract {
     //conversões
     fun convertParkingFactor(sampleParking: Int): Int
     fun convertPatternFactor(samplePattern: String): Double

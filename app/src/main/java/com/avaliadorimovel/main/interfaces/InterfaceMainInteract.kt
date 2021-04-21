@@ -1,4 +1,4 @@
 package com.avaliadorimovel.main.interfaces
 
-interface InterfaceMainInteractor {
+interface InterfaceMainInteract {
 }
