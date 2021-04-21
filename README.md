@@ -14,4 +14,3 @@ O objetivo é entregar um suporte básico de avaliação para quem pretende vend
 ### Notas
  Remaster avaliador de imóveis online.
  
-"# references" 
